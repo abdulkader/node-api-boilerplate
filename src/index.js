@@ -7,8 +7,14 @@ import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
+import elasticsearch from 'elasticsearch'
+require('dotenv').config()
 
 let app = express();
+const esClient = elasticsearch.Client({
+    host: process.env.ES_HOST,
+    log: process.env.ES_TRACE,
+})
 app.server = http.createServer(app);
 
 // logger
