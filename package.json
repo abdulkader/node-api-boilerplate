@@ -1,7 +1,7 @@
 {
   "name": "nodeapi",
   "version": "1.0.0",
-  "description": "Express & ES6 REST API Boilerplate ==================================",
+  "description": "Express & ES6 REST API Boilerplate",
   "main": "dist",
   "scripts": {
     "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
