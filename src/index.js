@@ -7,14 +7,16 @@ import initializeDb from './db';
 import middleware from './middleware';
 import api from './api';
 import config from './config.json';
-import elasticsearch from 'elasticsearch'
-require('dotenv').config()
+
+
+const path = require('path');
+
+const dotConfig = require('dotenv').config({
+    path: path.join(__dirname, "../.env")
+});
 
 let app = express();
-const esClient = elasticsearch.Client({
-    host: process.env.ES_HOST,
-    log: process.env.ES_TRACE,
-})
+
 app.server = http.createServer(app);
 
 // logger
@@ -33,10 +35,15 @@ app.use(bodyParser.json({
 initializeDb( db => {
 
 	// internal middleware
-	app.use(middleware({ config, db }));
+	app.use(middleware({
+	    dotConfig
+	}));
 
 	// api router
-	app.use('/api', api({ config, db }));
+	app.use('/api/v1/', api({
+	    config,
+	    db
+	}));
 
 	app.server.listen(process.env.PORT || config.port, () => {
 		console.log(`Started on port ${app.server.address().port}`);
