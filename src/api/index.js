@@ -1,4 +1,4 @@
-// import { version } from '../../package.json'
+import { name, description, version, author, license } from '../../package.json'
 import { Router } from 'express'
 import { esClient, catalogIndex } from './search'
 // import facets from './facets'
@@ -45,7 +45,7 @@ export default ({ config }) => {
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
-		res.json({ version });
+        res.json({ name, description, version, author, license });
 	});
 
 	return api;
