@@ -1,0 +1,58 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "Express & ES6 REST API Boilerplate ==================================",
+  "main": "dist",
+  "scripts": {
+    "dev": "nodemon -w src --exec \"babel-node src --presets es2015,stage-0\"",
+    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "start": "node dist",
+    "prestart": "npm run -s build",
+    "test": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true
+    },
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": 1
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdulkaderptp/node-api-boilerplate.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "boilerplate"
+  ],
+  "author": "Abdul Kader <ak@itsak.in>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/abdulkaderptp/node-api-boilerplate/issues"
+  },
+  "homepage": "https://github.com/abdulkaderptp/node-api-boilerplate#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "resource-router-middleware": "^0.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^5.2.0",
+    "nodemon": "^1.18.3"
+  }
+}
